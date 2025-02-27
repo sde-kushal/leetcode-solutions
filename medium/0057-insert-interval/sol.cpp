@@ -20,7 +20,7 @@ public:
             for (int i = 0; i < intervals.size(); i += 1) {
                 // out of range
                 if (intervals[i][1] < newInterval[0] || intervals[i][0] > newInterval[1]) {
-                    if(i > 0 && intervals[i][0] > newInterval[1] && intervals[i-1][1] < newInterval[0] && !inserted) {
+                    if(i > 0 && !inserted && intervals[i][0] > newInterval[1] && intervals[i-1][1] < newInterval[0]) {
                         n.push_back(newInterval);
                         l = r = -1;
                         inserted = true;
