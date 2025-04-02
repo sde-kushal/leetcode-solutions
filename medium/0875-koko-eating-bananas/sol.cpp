@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
@@ -16,8 +17,7 @@ public:
         for(int i=1;i<piles.size();i+=1)
             maxElement = max(maxElement,piles[i]);
 
-        // lower limit and upper limit are the leftmost and rightmost elements
-        // do binary search over these limits
+        // do binary search over 1 to maxElement
         int left = 1, right = maxElement;
         int mid, found;
 
