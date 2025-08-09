@@ -1,11 +1,15 @@
 class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        map: dict = {}
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        expected = {}
+        pair = []
 
-        for i in range(0,len(nums)):
-            if target-nums[i] in map:
-                return [map[target-nums[i]], i]
+        for i, num in enumerate(nums):
+            if num in expected:
+                j = expected.get(num)
+                pair = [i,j]
+                break
+
             else:
-                map[nums[i]] = i
+                expected[target-num] = i        
 
-        return []
+        return pair
