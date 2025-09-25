@@ -2,7 +2,24 @@
 #include <limits.h>
 using namespace std;
 
+// SEP 2025 ========================
 class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int rows = triangle.size();
+        
+        if(rows > 1)
+            for(int i=rows-1; i>0; i-=1)
+                for(int j=0; j<i; j+=1) 
+                    triangle[i-1][j] += min(triangle[i][j], triangle[i][j+1]); 
+
+        return triangle[0][0];
+    }
+};
+
+
+// NOV 2024 ========================
+/* class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
         vector<vector<int>> dp(2,vector<int>(triangle[triangle.size()-1].size()+1, INT_MAX));
@@ -21,4 +38,4 @@ public:
 
         return shortest==INT_MAX ? dp[0][0] : shortest;
     }
-};
+}; */
